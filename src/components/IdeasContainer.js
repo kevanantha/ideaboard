@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Grid from '@material-ui/core/Grid';
 import update from 'immutability-helper';
 import Idea from './Idea';
 import IdeaForm from './IdeaForm';
@@ -62,21 +63,31 @@ deleteIdea = id => {
 
   render() {
     return (
-      <div>
-        {this.state.ideas.map(idea => {
-          if (this.state.editingIdeaId === idea.id) {
-            return (<IdeaForm idea={idea} key={idea.id} updateIdea={this.updateIdea} titleRef={input => this.title = input} resetNotification={this.resetNotification} />)
-          } else {
-            return (<Idea idea={idea} key={idea.id} onClick={this.enableEditing} onDelete={this.deleteIdea} />)
-          }
-        })}
-        <button className='newIdeaButton' onClick={this.addNewIdea}>
-          New Idea
-        </button>
-        <span className='notification'>
-          {this.state.notification}
-        </span>
-      </div>
+      <Grid container spacing={16}>
+            {this.state.ideas.map(idea => {
+              if (this.state.editingIdeaId === idea.id) {
+                return (<IdeaForm idea={idea} key={idea.id} updateIdea={this.updateIdea} titleRef={input => this.title = input} resetNotification={this.resetNotification} />)
+              } else {
+                return (<Idea idea={idea} key={idea.id} onClick={this.enableEditing} onDelete={this.deleteIdea} />)
+              }
+            })}
+      </Grid>
+
+      // <div>
+      //  {this.state.ideas.map(idea => {
+      //    if (this.state.editingIdeaId === idea.id) {
+      //      return (<IdeaForm idea={idea} key={idea.id} updateIdea={this.updateIdea} titleRef={input => this.title = input} resetNotification={this.resetNotification} />)
+      //    } else {
+      //      return (<Idea idea={idea} key={idea.id} onClick={this.enableEditing} onDelete={this.deleteIdea} />)
+      //    }
+      //  })}
+      //  <button className='newIdeaButton' onClick={this.addNewIdea}>
+      //    New Idea
+      //  </button>
+      //  <span className='notification'>
+      //    {this.state.notification}
+      //  </span>
+      // </div>
     )
   }
 }

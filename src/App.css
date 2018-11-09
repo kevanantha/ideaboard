@@ -8,7 +8,7 @@
   font-size: large;
 }
 
-.tile {
+.title {
   height: 150px;
   width: 150px;
   margin: 10px;
@@ -57,6 +57,6 @@ textarea {
   color: red;
 }
 
-.tile:hover .deleteButton {
+.title:hover .deleteButton {
   visibility: visible;
 }
