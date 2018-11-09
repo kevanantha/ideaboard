@@ -68,6 +68,9 @@ deleteIdea = id => {
       <Button variant='contained' color='secondary' onClick={this.addNewIdea} style={{ margin: 10 }}>
         Create New Idea
       </Button>
+      <span>
+        {this.state.notification}
+      </span>
       <Grid container spacing={24}>
         {this.state.ideas.map(idea => {
           if (this.state.editingIdeaId === idea.id) {

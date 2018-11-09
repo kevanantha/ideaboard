@@ -24,6 +24,9 @@ class IdeaForm extends Component {
       }
 
       axios.put(`http://localhost:3001/api/v1/ideas/${this.props.idea.id}`, { idea })
+        .then(res => {
+          this.props.updateIdea(res.data);
+        })
         .catch(err => console.log(err))
     }
   }
