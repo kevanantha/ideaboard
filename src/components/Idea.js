@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Close from '@material-ui/icons/Close';
@@ -13,6 +12,7 @@ const style = {
 
 class Idea extends Component {
   handleClick = () => {
+    console.log(this.props)
     this.props.onClick(this.props.idea.id);
   }
 
@@ -22,27 +22,27 @@ class Idea extends Component {
 
   render() {
     return (
-      <Grid item sm key={this.props.idea.id}>
-      <Card style={style.Card}>
-        <CardHeader
-          title = {
-            <>
-              <Typography variant='h5' gutterBottom onClick={this.handleClick}>
-                {this.props.idea.title}
-              </Typography>
-              <Typography variant='body1' gutterBottom onClick={this.handleClick}>
-                {this.props.idea.body}
-              </Typography>
-            </>
-          }
-          action = {
-            <IconButton>
-              <Close onClick={this.handleDelete}/>
-            </IconButton>
-          }
-        >
-        </CardHeader>
-      </Card>
+      <Grid item sm={4} key={this.props.idea.id}>
+        <Card style={style.Card}>
+          <CardHeader
+            title = {
+              <>
+                <Typography variant='h5' gutterBottom onClick={this.handleClick}>
+                  {this.props.idea.title}
+                </Typography>
+                <Typography variant='body1' gutterBottom onClick={this.handleClick}>
+                  {this.props.idea.body}
+                </Typography>
+              </>
+            }
+            action = {
+              <IconButton onClick={this.handleDelete}>
+                <Close/>
+              </IconButton>
+            }
+          >
+          </CardHeader>
+        </Card>
       </Grid>
     )
   }
